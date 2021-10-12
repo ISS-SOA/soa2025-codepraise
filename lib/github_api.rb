@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 require 'http'
+require_relative 'project'
+require_relative 'contributor'
 
 module CodePraise
-  # Data structures for Github entities
-  Project = Struct.new(:size, :git_url, :owner, :contributors)
-  Contributor = Struct.new(:username, :email)
-
   # Library for Github Web API
   class GithubApi
     API_PROJECT_ROOT = 'https://api.github.com/repos'
@@ -28,26 +26,12 @@ module CodePraise
     def project(username, project_name)
       project_req_url = gh_api_path([username, project_name].join('/'))
       project_data = call_gh_url(project_req_url).parse
-
-      Project.new(
-        size: project_data['size'],
-        git_url: project_data['git_url'],
-        owner: Contributor.new(
-          username: project_data['owner']['login'],
-          email: project_data['owner']['email']
-        ),
-        contributors: contributors(project_data['contributors_url'])
-      )
+      Project.new(project_data, self)
     end
 
     def contributors(contributors_url)
       contributors_data = call_gh_url(contributors_url).parse
-      contributors_data.map do |account_data|
-        Contributor.new(
-          username: account_data['login'],
-          email: account_data['email']
-        )
-      end
+      contributors_data.map { |account_data| Contributor.new(account_data) }
     end
 
     private
