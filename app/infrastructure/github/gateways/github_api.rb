@@ -42,7 +42,7 @@ module CodePraise
 
         def get(url)
           http_response = HTTP.headers(
-            'Accept' => 'application/vnd.github.v3+json',
+            'Accept'        => 'application/vnd.github.v3+json',
             'Authorization' => "token #{@token}"
           ).get(url)
 
