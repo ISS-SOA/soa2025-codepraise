@@ -15,17 +15,19 @@ gem 'slim', '~> 5.0'
 # Web application related
 gem 'base64'
 gem 'logger', '~> 1.0'
-gem 'multi_json', '~> 1.15'
-gem 'ostruct', '~> 0.0'
 gem 'puma', '~> 6.0' # TODO: update to 7.0
 gem 'rack-session', '~> 0' # TODO: check if needed
-gem 'roar', '~> 1.0'
 gem 'roda', '~> 3.0'
 
 # Controllers and services
 gem 'dry-monads', '~> 1.0'
 gem 'dry-transaction', '~> 0'
 gem 'dry-validation', '~> 1.0'
+
+# Representers
+gem 'ostruct', '~> 0.0'
+gem 'multi_json', '~> 1.0'
+gem 'roar', '~> 1.0'
 
 # INFRASTRUCTURE LAYER
 # Networking
