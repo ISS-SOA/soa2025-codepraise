@@ -14,3 +14,8 @@ Metrics/BlockLength:
   Enabled: true
   Exclude:
     - 'spec/**/*'
+
+# See: https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Layout/MultilineMethodCallIndentation
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
