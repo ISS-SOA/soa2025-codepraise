@@ -942,4 +942,64 @@ http_interactions:
       encoding: UTF-8
       string: '[{"login":"Yuan-Yu","id":8809778,"node_id":"MDQ6VXNlcjg4MDk3Nzg=","avatar_url":"https://avatars.githubusercontent.com/u/8809778?v=4","gravatar_id":"","url":"https://api.github.com/users/Yuan-Yu","html_url":"https://github.com/Yuan-Yu","followers_url":"https://api.github.com/users/Yuan-Yu/followers","following_url":"https://api.github.com/users/Yuan-Yu/following{/other_user}","gists_url":"https://api.github.com/users/Yuan-Yu/gists{/gist_id}","starred_url":"https://api.github.com/users/Yuan-Yu/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Yuan-Yu/subscriptions","organizations_url":"https://api.github.com/users/Yuan-Yu/orgs","repos_url":"https://api.github.com/users/Yuan-Yu/repos","events_url":"https://api.github.com/users/Yuan-Yu/events{/privacy}","received_events_url":"https://api.github.com/users/Yuan-Yu/received_events","type":"User","user_view_type":"public","site_admin":false,"contributions":48},{"login":"SOA-KunLin","id":22166763,"node_id":"MDQ6VXNlcjIyMTY2NzYz","avatar_url":"https://avatars.githubusercontent.com/u/22166763?v=4","gravatar_id":"","url":"https://api.github.com/users/SOA-KunLin","html_url":"https://github.com/SOA-KunLin","followers_url":"https://api.github.com/users/SOA-KunLin/followers","following_url":"https://api.github.com/users/SOA-KunLin/following{/other_user}","gists_url":"https://api.github.com/users/SOA-KunLin/gists{/gist_id}","starred_url":"https://api.github.com/users/SOA-KunLin/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/SOA-KunLin/subscriptions","organizations_url":"https://api.github.com/users/SOA-KunLin/orgs","repos_url":"https://api.github.com/users/SOA-KunLin/repos","events_url":"https://api.github.com/users/SOA-KunLin/events{/privacy}","received_events_url":"https://api.github.com/users/SOA-KunLin/received_events","type":"User","user_view_type":"public","site_admin":false,"contributions":40},{"login":"luyimin","id":17100800,"node_id":"MDQ6VXNlcjE3MTAwODAw","avatar_url":"https://avatars.githubusercontent.com/u/17100800?v=4","gravatar_id":"","url":"https://api.github.com/users/luyimin","html_url":"https://github.com/luyimin","followers_url":"https://api.github.com/users/luyimin/followers","following_url":"https://api.github.com/users/luyimin/following{/other_user}","gists_url":"https://api.github.com/users/luyimin/gists{/gist_id}","starred_url":"https://api.github.com/users/luyimin/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/luyimin/subscriptions","organizations_url":"https://api.github.com/users/luyimin/orgs","repos_url":"https://api.github.com/users/luyimin/repos","events_url":"https://api.github.com/users/luyimin/events{/privacy}","received_events_url":"https://api.github.com/users/luyimin/received_events","type":"User","user_view_type":"public","site_admin":false,"contributions":21}]'
   recorded_at: Sun, 05 Oct 2025 06:52:13 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/https://api.github.com/repos/soumyaray/YPBT-app/contributors
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      Authorization:
+      - token <GITHUB_TOKEN>
+      Connection:
+      - close
+      Host:
+      - api.github.com
+      User-Agent:
+      - http.rb/5.3.1
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      Server:
+      - github.com
+      Date:
+      - Sun, 12 Oct 2025 06:31:31 GMT
+      X-Github-Request-Id:
+      - FEC3:28EDF:3111E6:45A54E:68EB4B43
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"message\": \"Not Found\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n
+        \ \"status\": \"404\"\r\n}"
+  recorded_at: Sun, 12 Oct 2025 06:31:31 GMT
 recorded_with: VCR 6.3.1

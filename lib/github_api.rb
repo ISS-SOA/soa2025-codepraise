@@ -14,26 +14,27 @@ module CodePraise
     end
 
     def project(username, project_name)
-      project_response = Request.new(REPOS_PATH, @gh_token)
-                                .repo(username, project_name).parse
+      project_response = Request.new(@gh_token)
+                                .get(repo_url(username, project_name)).parse
       Project.new(project_response, self)
     end
 
     def contributors(contributors_url)
-      contributors_data = Request.new(REPOS_PATH, @gh_token)
+      contributors_data = Request.new(@gh_token)
                                  .get(contributors_url).parse
       contributors_data.map { |account_data| Contributor.new(account_data) }
     end
 
+    private
+
+    def repo_url(username, project_name)
+      REPOS_PATH + [username, project_name].join('/')
+    end
+
     # Sends out HTTP requests to Github
     class Request
-      def initialize(resource_root, token)
-        @resource_root = resource_root
+      def initialize(token)
         @token = token
-      end
-
-      def repo(username, project_name)
-        get(@resource_root + [username, project_name].join('/'))
       end
 
       def get(url)
