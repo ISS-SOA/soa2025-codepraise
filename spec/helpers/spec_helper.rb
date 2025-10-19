@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+ENV['RACK_ENV'] = 'test'
+
 require 'simplecov'
 SimpleCov.start
 
@@ -11,14 +13,10 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../require_app'
+require_relative '../../require_app'
 require_app
 
 USERNAME = 'soumyaray'
 PROJECT_NAME = 'YPBT-app'
-CONFIG = YAML.safe_load_file('config/secrets.yml')
-GITHUB_TOKEN = CONFIG['GITHUB_TOKEN']
+GITHUB_TOKEN = CodePraise::App.config.GITHUB_TOKEN
 CORRECT = YAML.safe_load_file('spec/fixtures/github_results.yml')
-
-CASSETTES_FOLDER = 'spec/fixtures/cassettes'
-CASSETTE_FILE = 'github_api'

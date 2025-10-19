@@ -1,4 +1,7 @@
+.claude/
+CLAUDE.md
 _snippets/
 config/secrets.yml
 coverage/*
 !coverage/.resultset.json
+*.db
