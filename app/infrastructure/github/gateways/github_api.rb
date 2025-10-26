@@ -13,17 +13,25 @@ module CodePraise
       end
 
       def repo_data(username, project_name)
-        Request.new(@github_token).get(repo_url(username, project_name)).parse
+        Request.new(@github_token).get(
+          GithubUrl.new(username, project_name).to_s
+        ).parse
       end
 
       def contributors_data(contributors_url)
         Request.new(@github_token).get(contributors_url).parse
       end
 
-      private
+      # Helper class to build Github URL
+      class GithubUrl
+        def initialize(username, project_name)
+          @username = username
+          @project_name = project_name
+        end
 
-      def repo_url(username, project_name)
-        REPOS_PATH + [username, project_name].join('/')
+        def to_s
+          REPOS_PATH + [@username, @project_name].join('/')
+        end
       end
 
       # Sends out HTTP requests to Github
