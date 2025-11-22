@@ -14,10 +14,16 @@ module CodePraise
       private
 
       def get_api_list(projects_list)
-        Gateway::Api.new(CodePraise::App.config)
+        result = Gateway::Api.new(CodePraise::App.config)
           .projects_list(projects_list)
-          .then do |result|
-            result.success? ? Success(result.payload) : Failure(result.message)
+
+          if result.success?
+            Success(result.payload)
+          else
+            Representer::HttpResponse
+            .new(OpenStruct.new)
+            .from_json(result.payload)
+            .then { |error| Failure(error.message) }
           end
       rescue StandardError
         Failure('Could not access our API')

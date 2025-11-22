@@ -19,7 +19,7 @@ module CodePraise
           owner_name, project_name = input[:remote_url].split('/')[-2..]
           Success(owner_name:, project_name:)
         else
-          Failure(input.errors.values.join('; '))
+          Failure(input.errors.first.text)
         end
       end
 
@@ -27,11 +27,18 @@ module CodePraise
         result = Gateway::Api.new(CodePraise::App.config)
           .add_project(input[:owner_name], input[:project_name])
 
-        result.success? ? Success(result.payload) : Failure(result.message)
+        if result.success?
+          Success(result.payload)
+        else
+          Representer::HttpResponse
+            .new(OpenStruct.new)
+            .from_json(result.payload)
+            .then { |error| Failure(error.message) }
+        end
       rescue StandardError => e
         puts e.inspect
         puts e.backtrace
-        Failure('Cannot add projects right now; please try again later')
+        Failure('Cannot process the project — please check with admins')
       end
 
       def reify_project(project_json)

@@ -26,7 +26,14 @@ module CodePraise
         result = Gateway::Api.new(CodePraise::App.config)
           .appraise(input[:requested])
 
-        result.success? ? Success(result.payload) : Failure(result.message)
+        if result.success?
+          Success(result.payload)
+        else
+          Representer::HttpResponse
+            .new(OpenStruct.new)
+            .from_json(result.payload)
+            .then { |error| Failure(error.message) }
+        end
       rescue StandardError
         Failure('Cannot appraise projects right now; please try again later')
       end

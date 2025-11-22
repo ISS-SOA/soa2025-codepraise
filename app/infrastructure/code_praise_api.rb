@@ -83,10 +83,6 @@ module CodePraise
           code.between?(SUCCESS_CODES.first, SUCCESS_CODES.last)
         end
 
-        def message
-          payload['message']
-        end
-
         def payload
           body.to_s
         end
