@@ -7,7 +7,7 @@ module CodePraise
     # Form validation for Github project URL
     class NewProject < Dry::Validation::Contract
       URL_REGEX = %r{(http[s]?)://(www.)?github\.com/.*/.*(?<!git)$}
-      MSG_INVALID_URL = 'is an invalid address for a Github project'
+      MSG_INVALID_URL = 'The URL is an invalid address for a Github project'
 
       params do
         required(:remote_url).filled(:string)

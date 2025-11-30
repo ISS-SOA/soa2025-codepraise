@@ -9,7 +9,6 @@ AllCops:
     - '**/*.rb'
   Exclude:
     - '_snippets/**/*'  # Demo files for instruction
-    - 'repostore/**/*'  # CodePraise cloned code repos
 
 plugins:
   - rubocop-minitest
@@ -47,4 +46,6 @@ Style/SymbolArray:
   Enabled: true
   Exclude:
     - Rakefile
-    - app/infrastructure/database/migrations/*.rb
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false

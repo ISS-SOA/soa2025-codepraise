@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative '../../helpers/spec_helper'
-require_relative '../../helpers/database_helper'
 
 # require 'headless'
 require 'watir'
@@ -14,7 +13,6 @@ require 'watir'
 
 describe 'Acceptance Tests' do
   before do
-    DatabaseHelper.wipe_database
     # @headless = Headless.new
     @browser = Watir::Browser.new
   end
