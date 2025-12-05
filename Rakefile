@@ -7,6 +7,14 @@ task :default do
   puts `rake -T`
 end
 
+desc 'Run the unit and integration tests'
+task spec: ['spec:default']
+
+desc 'Keep rerunning unit/integration tests upon changes'
+task :respec do
+  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
+end
+
 # NOTE: run `rake run:test` in another process
 desc 'Run acceptance tests only'
 Rake::TestTask.new(:spec_accept) do |t|
@@ -28,13 +36,17 @@ task run: ['run:dev']
 namespace :run do
   desc 'Run the application in development mode'
   task :dev do
-    sh "rerun -c --ignore 'coverage/*' -- bundle exec puma -p 9000"
+    sh "bundle exec puma -p 9000"
   end
 
   desc 'Run the application in test mode'
   task :test do
-    sh "rerun -c --ignore 'coverage/*' -- bundle exec puma -p 9000"
+    sh "bundle exec puma -p 9000"
   end
+end
+
+task :rerun do
+  sh "rerun -c --ignore 'coverage/*' -- bundle exec puma -p 9000"
 end
 
 desc 'Run application console'

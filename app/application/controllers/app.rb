@@ -98,7 +98,14 @@ module CodePraise
               routing.redirect '/'
             end
 
-            appraised = result.value!
+            appraisal = OpenStruct.new(result.value!)
+            if appraisal.response.processing?
+              flash[:notice] = appraisal.response.message
+              routing.redirect '/'
+            end
+
+            appraised = appraisal.appraised
+
             proj_folder = Views::ProjectFolderContributions.new(
               appraised[:project], appraised[:folder]
             )
