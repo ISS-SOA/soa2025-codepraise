@@ -32,6 +32,7 @@ gem 'roar', '~> 1.0'
 # INFRASTRUCTURE LAYER
 # Networking
 gem 'http', '~> 5.0'
+gem 'openssl', '~> 3.3.1' # resolves MacoOS CRL error: https://github.com/ruby/openssl/issues/949
 
 # TESTING
 group :test do
